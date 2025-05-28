@@ -1,31 +1,31 @@
-import express from "express";
-import cors from "cors";
-import fetch from "node-fetch";
-import dotenv from "dotenv";
-dotenv.config();
-
-const app = express();
-app.use(cors());
-app.use(express.json());
-
-app.post("/api/chat", async (req, res) => {
-  const { messages } = req.body;
-
-  const groqResponse = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": `Bearer ${process.env.GROQ_API_KEY}`
-    },
-    body: JSON.stringify({
-      model: "llama-3.3-70b-versatile",
-      messages
-    })
-  });
-
-  const data = await groqResponse.json();
-  res.json(data);
-});
-
-const port = process.env.PORT || 3000;
-app.listen(port, () => console.log(`Backend running on port ${port}`));
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI Assistant - Groq Powered</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-container">
+    <aside class="sidebar">
+      <h2>Chat History</h2>
+      <ul id="historyList"></ul>
+      <button onclick="clearHistory()">🗑️ Clear History</button>
+    </aside>
+    
+    <main class="chat-window">
+      <header>
+        <h1>AI Assistant</h1>
+        <p>Powered by Groq API - LLaMA 3.3 70B</p>
+      </header>
+      <div id="chatlog" class="chatlog"></div>
+      <footer>
+        <input id="userInput" type="text" placeholder="Ask something..." onkeydown="if(event.key==='Enter') sendMessage()" />
+        <button onclick="sendMessage()">Send</button>
+      </footer>
+    </main>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
