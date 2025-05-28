@@ -1,12 +1,17 @@
 {
-  "name": "chatgpt-style-chatbot",
+  "name": "chat-suria",
+  "version": "1.0.0",
+  "description": "A professional ChatGPT-style chatbot interface using Groq API",
+  "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node src/index.js"
+    "start": "node index.js"
   },
+  "author": "YourName",
+  "license": "MIT",
   "dependencies": {
-    "dotenv": "^16.0.3",
-    "express": "^4.18.2",
+    "dotenv": "^16.3.1",
+    "express": "^4.19.2",
     "node-fetch": "^3.3.2"
   }
 }
