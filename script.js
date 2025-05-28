@@ -1,6 +1,6 @@
 const chatlog = document.getElementById("chatlog");
 const historyList = document.getElementById("historyList");
-const API_URL = "https://your-secure-backend.com/api/chat"; // Replace with your proxy endpoint
+const API_URL = "https://chatbot-backend-production.up.railway.app/api/chat";
 
 let history = JSON.parse(localStorage.getItem("chatHistory") || "[]");
 
